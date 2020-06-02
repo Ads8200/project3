@@ -1,0 +1,18 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <h3>What's on the menu?</h3>
+    <div class='flex_container'>
+        {% for category in menu_headings %}
+            <div class='flex_child'>
+                <a href="{% url 'category' category.name %}">{{ category }}</a>
+            </div>
+        {% empty %}
+            <div>No menu items</div>
+        {% endfor %}
+    </div>
+{% endblock %}

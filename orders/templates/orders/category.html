@@ -1,0 +1,19 @@
+{% extends "orders/base.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <h3>Insert category name here</h3>
+    <div class='flex_container'>
+        {% for item in menu_items %}
+            <div class='flex_child'>
+                {{ item }}
+            </div>
+        {% empty %}
+            <div>No menu items</div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

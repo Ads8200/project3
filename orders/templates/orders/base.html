@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'orders/css/styles.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Pinochios: {% block title %}{% endblock %}</title>
+</head>
+<body>
+    
+    <header>
+        <div>
+            <img id="logo" src="{% static 'orders/images/PinnochiosLogoWhite.001.png' %}"/>
+        </div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Location</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div id="nav_right_wrapper">
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="dropbtn">Hello, {{ user.first_name }}
+                          <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                          <a href="{% url 'logout' %}">Logout</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                        </div>
+                      </div>
+
+                {% else %}
+                    <a href="{% url 'login' %}"><button class="button login">Login</button></a>
+                    <a href="{% url 'register' %}"><button class="button register" >Register</button></a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        {% block main %}
+
+        {% endblock %}
+    </main>
+</body>
+</html>
